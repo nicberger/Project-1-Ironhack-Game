@@ -9,7 +9,9 @@ const ARROW_LEFT = 37;
 const ARROW_UP = 38;
 const PLAYER_MOVEMENT = 50;
 
-//player rect (x-value, y-value, width value, height value)
+//rect(x-value, y-value, width value, height value)
+let x = 0;
+let y = 0;
 
 //directions player rect (x-value, y-value, width value, height value)
 let playerVerticalDirection = 0;

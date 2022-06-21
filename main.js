@@ -1,7 +1,3 @@
-//rect(x-value, y-value, width value, height value)
-let x = 0;
-let y = 0;
-
 const player = new Player();
 let bullets = [];
 let enemies = [];

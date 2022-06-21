@@ -1,5 +1,5 @@
 class Enemies {
-    constructor(x, y) {
+    constructor() {
         this.x = 1050;
         this.y = random(100, 400);
         this.width = 20;
@@ -8,5 +8,8 @@ class Enemies {
 
     drawEnemies() {
         rect(this.x, this.y, this.width, this.height);
+    }
+    move() {
+        this.x -= 20;
     }
 }
