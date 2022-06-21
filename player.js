@@ -1,20 +1,15 @@
 class Player {
     constructor() {
-        this.x = 5;
-        this.y = 300;
+        this.x = 10;
+        this.y = canvasHeight / 2;
         this.width = 60;
-        this.height = 60;
-        this.directions = DIRECTIONS;
+        this.height = 40;
     }
-
     draw() {
-        ctx.fillStyle = "Black";
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        rect(this.x, this.y, this.width, this.height);
+    }
+    move() {
+        this.x = playerHorizontalDirection;
+        this.y = playerVerticalDirection;
     }
 }
-
-document.addEventListener("keydown", function (event) {
-    if (event.keyCode === ARROW_LEFT) {
-        alert("Test");
-    }
-});
