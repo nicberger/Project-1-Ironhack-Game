@@ -1,6 +1,5 @@
 const player = new Player();
-let bullets = [];
-let enemies = [];
+const enemy = new Enemies();
 
 function setup() {
     createCanvas(1000, 600);
@@ -8,42 +7,60 @@ function setup() {
 
 function draw() {
     background(200);
+    enemy.draw();
     player.draw();
     player.move();
     for (let i = 0; i < bullets.length; i++) {
         bullets[i].draw();
         bullets[i].move();
     }
+    player.keyPressed();
+
+    //Player is colliding with enemy
+    if (isCollidingWithEnemy(player, enemy)) {
+        gameOver();
+    }
 }
 
-// KeyHandler functions
+function isCollidingWithEnemy(parameterA, parameterB) {
+    // this function checks wether the player/bullet is colliding with the enemy
+    // conditions for collision are the following:
+    // Bottom of A >= Top of B
+    // Top of A <= Bottom of B
+    // Left of A <= Right of B
+    // Right of A >= Left of B
+    // player/bullet is parameterA and enemy is parameterB
 
-function keyPressed() {
-    // shooting bullets with space button
-    if (key === " ") {
-        let bullet = new Bullets(player.x, player.y + 10);
-        bullets.push(bullet);
-    }
-    // moving Player horizontally and vertically with arrow keys
-    if (keyCode === ARROW_LEFT) {
-        playerHorizontalDirection -= 50;
-        if (playerHorizontalDirection < -60) {
-            playerHorizontalDirection = 1000;
-        }
-    } else if (keyCode === ARROW_DOWN) {
-        playerVerticalDirection += 50;
-        if (playerVerticalDirection >= 640) {
-            playerVerticalDirection = 0;
-        }
-    } else if (keyCode === ARROW_UP) {
-        playerVerticalDirection -= 50;
-        if (playerVerticalDirection <= -40) {
-            playerVerticalDirection = 600;
-        }
-    } else if (keyCode === ARROW_RIGHT) {
-        playerHorizontalDirection += 50;
-        if (playerHorizontalDirection >= 1060) {
-            playerHorizontalDirection = 0;
-        }
-    }
+    const bottomOfA = parameterA.y + parameterA.height;
+    const topOfB = parameterB.y;
+    const isBottomOfABiggerThenTopOfB = bottomOfA > topOfB;
+
+    const topOfA = parameterA.y;
+    const bottomOfB = parameterB.height + parameterB.y;
+
+    const isTopOfASmallerThanBottomOfB = topOfA <= bottomOfB;
+
+    const leftOfA = parameterA.x;
+    const rightOfB = parameterB.x + parameterB.width;
+    const isLeftOfASmallerThanRightOfB = leftOfA <= rightOfB;
+
+    const rightOfA = parameterA.width + parameterA.x;
+    const leftOfB = parameterB.x;
+    const isRightOfABiggerThanLeftOfB = rightOfA >= leftOfB;
+
+    return (
+        isBottomOfABiggerThenTopOfB &&
+        isTopOfASmallerThanBottomOfB &&
+        isLeftOfASmallerThanRightOfB &&
+        isRightOfABiggerThanLeftOfB
+    );
+}
+
+//Game Over Screen appears whenever player is colliding with an enemy object
+function gameOver() {
+    background(150);
+    textSize(72);
+    textAlign(CENTER);
+    text("GAME OVER", width / 2, height / 2);
+    noLoop();
 }

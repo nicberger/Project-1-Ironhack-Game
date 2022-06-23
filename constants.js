@@ -16,3 +16,7 @@ let y = 0;
 //directions player rect (x-value, y-value, width value, height value)
 let playerVerticalDirection = 0;
 let playerHorizontalDirection = 0;
+
+//Array for Bullets and Enemies
+let bullets = [];
+let enemies = [];
