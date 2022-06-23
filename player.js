@@ -7,12 +7,6 @@ class Player {
     }
 
     keyPressed() {
-        // shooting bullets with space button
-        if (keyIsDown(SPACEBAR)) {
-            let bullet = new Bullets(player.x, player.y + 10);
-            bullets.push(bullet);
-        }
-        // moving Player horizontally and vertically with arrow keys
         if (keyIsDown(ARROW_LEFT)) {
             playerHorizontalDirection -= 5;
             if (playerHorizontalDirection < -60) {
