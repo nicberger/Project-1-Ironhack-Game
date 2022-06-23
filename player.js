@@ -8,7 +8,7 @@ class Player {
 
     keyPressed() {
         // shooting bullets with space button
-        if (key === " ") {
+        if (keyIsDown(SPACEBAR)) {
             let bullet = new Bullets(player.x, player.y + 10);
             bullets.push(bullet);
         }
