@@ -7,8 +7,8 @@ function setup() {
 function draw() {
     background(200);
     game.play();
-    game.playerAndEnemyColliding();
     game.bulletAndEnemyColliding();
+    game.bulletAndObstacleColliding();
     game.bulletsShooting();
     game.keyPressed();
 }

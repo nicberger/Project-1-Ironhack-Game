@@ -1,7 +1,6 @@
 class Game {
     constructor() {
         this.player = new Player();
-        this.enemy = new Enemies();
         this.bullets = new Bullets();
         this.obstacles = [];
     }
@@ -11,7 +10,6 @@ class Game {
         this.bullets.draw();
         this.player.move();
         this.bullets.move();
-        this.enemy.draw();
 
         if (frameCount % 75 === 0) {
             // if (frameCount % 180 === 0) {
@@ -28,35 +26,60 @@ class Game {
         });
     }
 
-    playerAndEnemyColliding() {
-        if (isCollidingWithEnemy(this.player, this.enemy)) {
-            gameOver();
-        }
-    }
+    // playerAndEnemyColliding() {
+    //     if (isCollidingWithEnemy(this.player, this.enemy)) {
+    //         gameOver();
+    //     }
+    // }
 
     keyPressed() {
         this.player.keyPressed();
         //shooting bullets with space button
-        if (keyIsDown(SPACEBAR)) {
+        console.log(cooldown);
+        if (keyIsDown(SPACEBAR) && cooldown == 0) {
+            cooldown = 40;
             let bullet = new Bullets(
                 playerHorizontalDirection,
                 playerVerticalDirection + 10
             );
             bullets.push(bullet);
         }
+        if (cooldown != 0) {
+            cooldown--;
+        }
     }
 
     bulletsShooting() {
+        console.log(bullets[0]);
         for (let i = 0; i < bullets.length; i++) {
             bullets[i].draw();
             bullets[i].move();
+            if (bullets[i].x > canvasWidth) {
+                bullets.splice(i, 1);
+            }
         }
     }
 
-    //Collision Detection with bullet and enemy still not working
+    //Collision Detection with player and obstacle
     bulletAndEnemyColliding() {
-        if (isCollidingWithEnemy(this.bullets, this.enemy)) {
-            gameOver();
+        for (let i = 0; i < this.obstacles.length; i++) {
+            if (isCollidingWithEnemy(this.player, this.obstacles[i])) {
+                gameOver();
+            }
         }
+    }
+
+    //Collision Detection with bullet and onstacle
+    bulletAndObstacleColliding() {
+        for (let i = 0; i < bullets.length; i++)
+            for (let y = 0; y < this.obstacles.length; y++) {
+                if (isCollidingWithEnemy(bullets[i], this.obstacles[y])) {
+                    score++;
+                    anzeigeSPAN.innerHTML = score;
+                    this.obstacles.splice(y, 1);
+                    bullets.splice(i, 1);
+                    break;
+                }
+            }
     }
 }

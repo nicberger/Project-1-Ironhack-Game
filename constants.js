@@ -21,3 +21,11 @@ let playerHorizontalDirection = 0;
 //Array for Bullets and Enemies
 let bullets = [];
 let enemies = [];
+
+let cooldown = 0;
+
+//Score
+let anzeigeSPAN = document.getElementById("score");
+
+let score = 0;
+anzeigeSPAN.innerHTML = score;
