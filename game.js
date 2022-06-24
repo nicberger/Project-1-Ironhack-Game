@@ -35,17 +35,16 @@ class Game {
     keyPressed() {
         this.player.keyPressed();
         //shooting bullets with space button
-        console.log(cooldown);
-        if (keyIsDown(SPACEBAR) && cooldown == 0) {
-            cooldown = 40;
+        if (keyIsDown(SPACEBAR) && bulletsRegulator == 0) {
+            bulletsRegulator = 40;
             let bullet = new Bullets(
                 playerHorizontalDirection,
                 playerVerticalDirection + 10
             );
             bullets.push(bullet);
         }
-        if (cooldown != 0) {
-            cooldown--;
+        if (bulletsRegulator != 0) {
+            bulletsRegulator--;
         }
     }
 

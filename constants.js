@@ -22,7 +22,7 @@ let playerHorizontalDirection = 0;
 let bullets = [];
 let enemies = [];
 
-let cooldown = 0;
+let bulletsRegulator = 0;
 
 //Score
 let anzeigeSPAN = document.getElementById("score");
