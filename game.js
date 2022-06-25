@@ -2,14 +2,17 @@ class Game {
     constructor() {
         this.player = new Player();
         this.bullets = new Bullets();
+        this.background = new Background();
         this.obstacles = [];
     }
 
     preload() {
         this.player.preload();
+        this.background.preload();
     }
 
     play() {
+        this.background.drawBackground();
         this.player.draw();
         this.bullets.draw();
         this.player.move();
