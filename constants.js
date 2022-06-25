@@ -29,3 +29,6 @@ let anzeigeSPAN = document.getElementById("score");
 
 let score = 0;
 anzeigeSPAN.innerHTML = score;
+
+let obstaclesimage;
+let bulletImage;

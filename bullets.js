@@ -4,7 +4,11 @@ class Bullets {
         this.y = y;
         this.width = 20;
         this.height = 20;
-        this.toDelete = false;
+        // this.img = img;
+    }
+
+    preload() {
+        this.imgBlaster = loadImage("images/bullet_blaster_big_single.png");
     }
 
     draw() {

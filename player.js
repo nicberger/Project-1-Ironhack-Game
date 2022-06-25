@@ -2,8 +2,8 @@ class Player {
     constructor() {
         this.x = 10;
         this.y = canvasHeight / 2;
-        this.width = 60;
-        this.height = 40;
+        this.width = 80;
+        this.height = 50;
     }
     preload() {
         this.imgSpaceship = loadImage("images/Spaceship1.png");

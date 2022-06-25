@@ -8,7 +8,10 @@ class Game {
 
     preload() {
         this.player.preload();
+        this.bullets.preload();
         this.background.preload();
+        obstaclesimage = loadImage("images/asteroid_02.png");
+        // bulletImage = loadImage("images/bullet_blaster_big_single.png");
     }
 
     play() {
@@ -20,7 +23,7 @@ class Game {
 
         if (frameCount % 75 === 0) {
             // if (frameCount % 180 === 0) {
-            this.obstacles.push(new Obstacle());
+            this.obstacles.push(new Obstacle(obstaclesimage));
         }
 
         // in here we clear every obstacle that is no longer visible.
@@ -50,7 +53,6 @@ class Game {
     }
 
     bulletsShooting() {
-        console.log(bullets[0]);
         for (let i = 0; i < bullets.length; i++) {
             bullets[i].draw();
             bullets[i].move();
