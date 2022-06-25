@@ -5,6 +5,10 @@ class Game {
         this.obstacles = [];
     }
 
+    preload() {
+        this.player.preload();
+    }
+
     play() {
         this.player.draw();
         this.bullets.draw();
@@ -25,12 +29,6 @@ class Game {
             return obstacle.x >= -obstacle.width;
         });
     }
-
-    // playerAndEnemyColliding() {
-    //     if (isCollidingWithEnemy(this.player, this.enemy)) {
-    //         gameOver();
-    //     }
-    // }
 
     keyPressed() {
         this.player.keyPressed();

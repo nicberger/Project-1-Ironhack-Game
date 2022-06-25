@@ -5,6 +5,10 @@ class Player {
         this.width = 60;
         this.height = 40;
     }
+    preload() {
+        this.imgSpaceship = loadImage("images/Spaceship1.png");
+        console.log(this.imgSpaceship);
+    }
 
     keyPressed() {
         if (keyIsDown(ARROW_LEFT)) {
@@ -31,7 +35,7 @@ class Player {
     }
 
     draw() {
-        rect(this.x, this.y, this.width, this.height);
+        image(this.imgSpaceship, this.x, this.y, this.width, this.height);
     }
     move() {
         this.x = playerHorizontalDirection;

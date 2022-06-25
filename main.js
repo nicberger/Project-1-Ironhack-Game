@@ -12,3 +12,7 @@ function draw() {
     game.bulletsShooting();
     game.keyPressed();
 }
+
+function preload() {
+    game.preload();
+}
