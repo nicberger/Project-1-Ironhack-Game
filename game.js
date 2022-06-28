@@ -1,30 +1,36 @@
 class Game {
     constructor() {
         this.player = new Player();
-        this.bullets = new Bullets();
         this.background = new Background();
         this.obstacles = [];
+        this.explosions = [];
     }
 
     preload() {
         this.player.preload();
-        this.bullets.preload();
+        // this.bullets.preload();
         this.background.preload();
         obstaclesimage = loadImage("images/asteroid_02.png");
-        // bulletImage = loadImage("images/bullet_blaster_big_single.png");
+        bulletImage = loadImage("images/bullet_blaster_big_single.png");
+        console.log(bulletImage);
+        explosionImage = loadImage("images/3IsK.gif");
     }
 
     play() {
         this.background.drawBackground();
         this.player.draw();
-        this.bullets.draw();
+
+        // this.bullets.draw();
         this.player.move();
-        this.bullets.move();
+        // this.bullets.move();
 
         if (frameCount % 75 === 0) {
             // if (frameCount % 180 === 0) {
             this.obstacles.push(new Obstacle(obstaclesimage));
         }
+        this.explosions = this.explosions.filter((explosion) => {
+            return explosion.draw();
+        });
 
         // in here we clear every obstacle that is no longer visible.
         this.obstacles = this.obstacles.filter((obstacle) => {
@@ -41,9 +47,11 @@ class Game {
         //shooting bullets with space button
         if (keyIsDown(SPACEBAR) && bulletsRegulator == 0) {
             bulletsRegulator = 40;
+
             let bullet = new Bullets(
                 playerHorizontalDirection,
-                playerVerticalDirection + 10
+                playerVerticalDirection + 10,
+                bulletImage
             );
             bullets.push(bullet);
         }
@@ -76,6 +84,13 @@ class Game {
         for (let i = 0; i < bullets.length; i++)
             for (let y = 0; y < this.obstacles.length; y++) {
                 if (isCollidingWithEnemy(bullets[i], this.obstacles[y])) {
+                    var explosion = new Explosions(
+                        bullets[i].x,
+                        bullets[i].y - 100,
+                        explosionImage
+                    );
+                    this.explosions.push(explosion);
+
                     score++;
                     anzeigeSPAN.innerHTML = score;
                     this.obstacles.splice(y, 1);

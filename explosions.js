@@ -1,11 +1,11 @@
-class Bullets {
+class Explosions {
     constructor(x, y, img) {
         this.x = x;
         this.y = y;
-        this.width = 77;
-        this.height = 26;
+        this.width = 100;
+        this.height = 100;
         this.img = img;
-        console.log(img);
+        this.cooldown = 100;
     }
 
     // preload() {
@@ -13,9 +13,9 @@ class Bullets {
     // }
 
     draw() {
+        this.cooldown--;
+        if (this.cooldown == 0) return false;
         image(this.img, this.x, this.y, this.width, this.height);
-    }
-    move() {
-        this.x = this.x + 20;
+        return true;
     }
 }

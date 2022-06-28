@@ -32,3 +32,9 @@ anzeigeSPAN.innerHTML = score;
 
 let obstaclesimage;
 let bulletImage;
+let explosionImage;
+
+// functions and formulas
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
