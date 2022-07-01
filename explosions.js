@@ -5,12 +5,8 @@ class Explosions {
         this.width = 100;
         this.height = 100;
         this.img = img;
-        this.cooldown = 100;
+        this.cooldown = 40;
     }
-
-    // preload() {
-    //     this.imgBlaster = loadImage("images/bullet_blaster_big_single.png");
-    // }
 
     draw() {
         this.cooldown--;

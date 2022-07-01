@@ -13,7 +13,7 @@ class Game {
         obstaclesimage = loadImage("images/asteroid_02.png");
         bulletImage = loadImage("images/bullet_blaster_big_single.png");
         console.log(bulletImage);
-        explosionImage = loadImage("images/3IsK.gif");
+        explosionImage = loadImage("images/VRwF.gif");
     }
 
     play() {
