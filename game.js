@@ -1,6 +1,6 @@
 class Game {
     constructor() {
-        this.player = new Player();
+        this.player = new Player(0, canvasHeight / 2);
         this.background = new Background();
         this.obstacles = [];
         this.explosions = [];

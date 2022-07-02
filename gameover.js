@@ -1,8 +1,13 @@
 //Game Over Screen appears whenever player is colliding with an enemy object
 function gameOver() {
-    background(150);
-    textSize(72);
-    textAlign(CENTER);
-    text("GAME OVER", width / 2, height / 2);
-    noLoop();
+    gameMode = 2;
+    button2 = createButton("Play");
+    button2.position(500, 350);
+    button2.mousePressed(reStartGame);
+    game = new Game();
+    playerVerticalDirection = canvasHeight / 2;
+    playerHorizontalDirection = 0;
+    score = 0;
+    anzeigeSPAN.innerHTML = score;
+    preload();
 }

@@ -15,7 +15,7 @@ let x = 0;
 let y = 0;
 
 //directions player rect (x-value, y-value, width value, height value)
-let playerVerticalDirection = 0;
+let playerVerticalDirection = canvasHeight / 2;
 let playerHorizontalDirection = 0;
 
 //Array for Bullets and Enemies
@@ -38,3 +38,8 @@ let explosionImage;
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
+
+//variables main.js
+var gameMode = 0;
+let button;
+let button2;

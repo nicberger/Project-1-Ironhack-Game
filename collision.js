@@ -6,7 +6,9 @@ function isCollidingWithEnemy(parameterA, parameterB) {
     // Left of A <= Right of B
     // Right of A >= Left of B
     // player/bullet is parameterA and enemy is parameterB
-
+    // stroke(255, 204, 0);
+    // strokeWeight(4);
+    // rect(parameterB.x, parameterB.y, parameterB.width, parameterB.height);
     const bottomOfA = parameterA.y + parameterA.height;
     const topOfB = parameterB.y;
     const isBottomOfABiggerThenTopOfB = bottomOfA > topOfB;
