@@ -15,7 +15,7 @@ function draw() {
         textSize(50);
         textAlign(CENTER);
         text("Kill the Asteroids", 500, 120);
-        textFont(font1);
+        // textFont(font1);
         // text("Game Beschreibung kommt hier hin...", 500, 400);
         textSize(12);
         textAlign(CENTER);
