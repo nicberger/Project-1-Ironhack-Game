@@ -1,4 +1,6 @@
 var game = new Game();
+let bg;
+let bgGameover;
 
 function setup() {
     createCanvas(1000, 600);
@@ -10,11 +12,12 @@ function setup() {
 function draw() {
     //Start screen
     if (gameMode == 0) {
-        background(200);
+        image(bg, -60, 0, 1024, 768);
         fill(227, 101, 91);
         textSize(50);
         textAlign(CENTER);
-        text("Kill the Asteroids", 500, 300);
+        text("Kill the Asteroids", 500, 120);
+        textFont(font1);
         // text("Game Beschreibung kommt hier hin...", 500, 400);
         textSize(12);
         textAlign(CENTER);
@@ -32,16 +35,17 @@ function draw() {
 
     //Game Over Screen
     if (gameMode == 2) {
-        background(150);
-
+        image(bgGameover, -60, 0, 1064, 841);
         textSize(72);
         textAlign(CENTER);
         text("GAME OVER", width / 2, height / 2);
     }
-    console.log(gameMode);
 }
 
 function preload() {
+    font1 = loadFont("Fonts/ARCADE_N.TTF");
+    bg = loadImage("images/background_01_static.png");
+    bgGameover = loadImage("images/background_01_parallax_01.png");
     game.preload();
 }
 

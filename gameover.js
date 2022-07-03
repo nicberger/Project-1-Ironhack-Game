@@ -1,7 +1,7 @@
 //Game Over Screen appears whenever player is colliding with an enemy object
 function gameOver() {
     gameMode = 2;
-    button2 = createButton("Play");
+    button2 = createButton("Retry");
     button2.position(500, 350);
     button2.mousePressed(reStartGame);
     game = new Game();
