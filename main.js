@@ -1,6 +1,4 @@
-var game = new Game();
-let bg;
-let bgGameover;
+let game = new Game();
 
 function setup() {
     createCanvas(1000, 600);

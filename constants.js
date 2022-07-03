@@ -43,3 +43,7 @@ function getRndInteger(min, max) {
 var gameMode = 0;
 let button;
 let button2;
+
+//Background images
+let bg;
+let bgGameover;
