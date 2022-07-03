@@ -41,7 +41,7 @@ function draw() {
 }
 
 function preload() {
-    font1 = loadFont("Fonts/ARCADE_N.TTF");
+    font1 = loadFont("fonts/ARCADE_N.TTF");
     bg = loadImage("images/background_01_static.png");
     bgGameover = loadImage("images/background_01_parallax_01.png");
     game.preload();
