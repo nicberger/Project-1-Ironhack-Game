@@ -5,7 +5,6 @@ class Bullets {
         this.width = 77;
         this.height = 26;
         this.img = img;
-        console.log(img);
     }
 
     // preload() {

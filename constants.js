@@ -30,9 +30,13 @@ let anzeigeSPAN = document.getElementById("score");
 let score = 0;
 anzeigeSPAN.innerHTML = score;
 
+//Images classes
 let obstaclesimage;
 let bulletImage;
 let explosionImage;
+let techsImage;
+let techsImage2;
+let techsImageArray = [];
 
 // functions and formulas
 function getRndInteger(min, max) {
@@ -47,3 +51,4 @@ let button2;
 //Background images
 let bg;
 let bgGameover;
+let muskStartScreenImage;

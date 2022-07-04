@@ -11,6 +11,7 @@ function draw() {
     //Start screen
     if (gameMode == 0) {
         image(bg, -60, 0, 1024, 768);
+        image(muskStartScreenImage, 452, 400, 188, 157);
         fill(227, 101, 91);
         textSize(50);
         textAlign(CENTER);
@@ -43,6 +44,7 @@ function draw() {
 function preload() {
     font1 = loadFont("fonts/ARCADE_N.TTF");
     bg = loadImage("images/background_01_static.png");
+    muskStartScreenImage = loadImage("images/ElonMuskStarterScreen.png");
     bgGameover = loadImage("images/background_01_parallax_01.png");
     game.preload();
 }

@@ -4,16 +4,16 @@ class Game {
         this.background = new Background();
         this.obstacles = [];
         this.explosions = [];
+        this.techs = [];
     }
 
     preload() {
         this.player.preload();
-        // this.bullets.preload();
         this.background.preload();
         obstaclesimage = loadImage("images/asteroid_02.png");
         bulletImage = loadImage("images/bullet_blaster_big_single.png");
-        console.log(bulletImage);
         explosionImage = loadImage("images/VRwF.gif");
+        techsImage = loadImage("images/Branson.png");
     }
 
     play() {
@@ -28,6 +28,11 @@ class Game {
             // if (frameCount % 180 === 0) {
             this.obstacles.push(new Obstacle(obstaclesimage));
         }
+        if (frameCount % 360 === 0) {
+            // if (frameCount % 180 === 0) {
+            this.techs.push(new Techs(techsImage));
+        }
+
         this.explosions = this.explosions.filter((explosion) => {
             return explosion.draw();
         });
@@ -39,6 +44,14 @@ class Game {
             obstacle.drawObstacle();
 
             return obstacle.x >= -obstacle.width;
+        });
+
+        this.techs = this.techs.filter((tech) => {
+            // because we are calling the methods, things still happen (like drawing the obstacle).
+            // even if this is not directly the responsability of the current filter method, we can still, effectively, draw the obstacles
+            tech.drawTechs();
+
+            return tech.x >= -tech.width;
         });
     }
 

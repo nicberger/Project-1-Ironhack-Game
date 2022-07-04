@@ -7,7 +7,6 @@ class Player {
     }
     preload() {
         this.imgSpaceship = loadImage("images/Spaceship1.png");
-        console.log(this.imgSpaceship);
     }
 
     keyPressed() {
