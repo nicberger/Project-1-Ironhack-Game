@@ -12,6 +12,7 @@ class Game {
         this.background.preload();
         obstaclesimage = loadImage("images/asteroid_02.png");
         bulletImage = loadImage("images/bullet_blaster_big_single.png");
+        teleporterImage = loadImage("images/teleportBullet.png");
         explosionImage = loadImage("images/VRwF.gif");
         techsImage = loadImage("images/Branson.png");
     }
@@ -19,10 +20,7 @@ class Game {
     play() {
         this.background.drawBackground();
         this.player.draw();
-
-        // this.bullets.draw();
         this.player.move();
-        // this.bullets.move();
 
         if (frameCount % 75 === 0) {
             // if (frameCount % 180 === 0) {
@@ -57,7 +55,7 @@ class Game {
 
     keyPressed() {
         this.player.keyPressed();
-        //shooting bullets with space button
+        //shooting bullets with SPACEBAR
         if (keyIsDown(SPACEBAR) && bulletsRegulator == 0) {
             bulletsRegulator = 40;
 
@@ -66,25 +64,49 @@ class Game {
                 playerVerticalDirection + 10,
                 bulletImage
             );
-            bullets.push(bullet);
+            bulletsArray.push(bullet);
         }
         if (bulletsRegulator != 0) {
             bulletsRegulator--;
         }
+        //shooting teleporter with B Key
+        if (keyIsDown(KEYB) && teleporterRegulator == 0) {
+            teleporterRegulator = 40;
+
+            let teleporter = new Teleporter(
+                playerHorizontalDirection,
+                playerVerticalDirection + 10,
+                teleporterImage
+            );
+            teleporterArray.push(teleporter);
+        }
+        if (teleporterRegulator != 0) {
+            teleporterRegulator--;
+        }
     }
 
     bulletsShooting() {
-        for (let i = 0; i < bullets.length; i++) {
-            bullets[i].draw();
-            bullets[i].move();
-            if (bullets[i].x > canvasWidth) {
-                bullets.splice(i, 1);
+        for (let i = 0; i < bulletsArray.length; i++) {
+            bulletsArray[i].draw();
+            bulletsArray[i].move();
+            if (bulletsArray[i].x > canvasWidth) {
+                bulletsArray.splice(i, 1);
             }
         }
     }
 
-    //Collision Detection with player and obstacle
-    bulletAndEnemyColliding() {
+    teleporterShooting() {
+        for (let i = 0; i < teleporterArray.length; i++) {
+            teleporterArray[i].draw();
+            teleporterArray[i].move();
+            if (teleporterArray[i].x > canvasWidth) {
+                teleporterArray.splice(i, 1);
+            }
+        }
+    }
+
+    //Collision Detection: Player hitting obstacle
+    playerObstacleCollision() {
         for (let i = 0; i < this.obstacles.length; i++) {
             if (isCollidingWithEnemy(this.player, this.obstacles[i])) {
                 gameOver();
@@ -92,14 +114,14 @@ class Game {
         }
     }
 
-    //Collision Detection with bullet and onstacle
-    bulletAndObstacleColliding() {
-        for (let i = 0; i < bullets.length; i++)
+    //Collision Detection: Bullet hitting obstacle
+    bulletObstacleCollision() {
+        for (let i = 0; i < bulletsArray.length; i++)
             for (let y = 0; y < this.obstacles.length; y++) {
-                if (isCollidingWithEnemy(bullets[i], this.obstacles[y])) {
-                    var explosion = new Explosions(
-                        bullets[i].x,
-                        bullets[i].y - 100,
+                if (isCollidingWithEnemy(bulletsArray[i], this.obstacles[y])) {
+                    let explosion = new Explosions(
+                        bulletsArray[i].x,
+                        bulletsArray[i].y - 100,
                         explosionImage
                     );
                     this.explosions.push(explosion);
@@ -107,7 +129,28 @@ class Game {
                     score++;
                     anzeigeSPAN.innerHTML = score;
                     this.obstacles.splice(y, 1);
-                    bullets.splice(i, 1);
+                    bulletsArray.splice(i, 1);
+                    break;
+                }
+            }
+    }
+
+    //Collision Detection: Teleporter hitting techguy
+    teleporterTechguyCollision() {
+        for (let i = 0; i < teleporterArray.length; i++)
+            for (let y = 0; y < this.techs.length; y++) {
+                if (isCollidingWithEnemy(teleporterArray[i], this.techs[y])) {
+                    let explosion = new Explosions(
+                        teleporterArray[i].x,
+                        teleporterArray[i].y - 100,
+                        explosionImage
+                    );
+                    this.explosions.push(explosion);
+
+                    score++;
+                    anzeigeSPAN.innerHTML = score;
+                    this.techs.splice(y, 1);
+                    teleporterArray.splice(i, 1);
                     break;
                 }
             }

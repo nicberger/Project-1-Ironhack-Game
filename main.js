@@ -27,9 +27,11 @@ function draw() {
     if (gameMode == 1) {
         background(200);
         game.play();
-        game.bulletAndEnemyColliding();
-        game.bulletAndObstacleColliding();
+        game.playerObstacleCollision();
+        game.bulletObstacleCollision();
+        game.teleporterTechguyCollision();
         game.bulletsShooting();
+        game.teleporterShooting();
         game.keyPressed();
     }
 
