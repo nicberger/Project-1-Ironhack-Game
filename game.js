@@ -18,10 +18,10 @@ class Game {
         teleportExplosionImage = loadImage("images/teleportExplosion.gif");
         techsImage = loadImage("images/Branson.png");
         //Sounds
-        explosionSound = loadSound("Sounds/explosionSound.wav");
-        bulletShootingSound = loadSound("Sounds/bulletFireSound.wav");
-        teleporterShotSound = loadSound("Sounds/teleporterShotSound.mp3");
-        muskAliensSound = loadSound("Sounds/MuskAliens.wav");
+        explosionSound = loadSound("sounds/explosionSound.wav");
+        bulletShootingSound = loadSound("sounds/bulletFireSound.wav");
+        teleporterShotSound = loadSound("sounds/teleporterShotSound.mp3");
+        muskAliensSound = loadSound("sounds/MuskAliens.wav");
     }
 
     play() {
