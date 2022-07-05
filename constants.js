@@ -37,6 +37,7 @@ let obstaclesimage;
 let bulletImage;
 let teleporterImage;
 let explosionImage;
+let teleportExplosionImage;
 let techsImage;
 let techsImage2;
 let techsImageArray = [];
@@ -55,3 +56,9 @@ let button2;
 let bg;
 let bgGameover;
 let muskStartScreenImage;
+
+//Sounds
+let explosionSound;
+let bulletShootingSound;
+let teleporterShotSound;
+let muskAliensSound;

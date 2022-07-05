@@ -14,7 +14,12 @@ class Game {
         bulletImage = loadImage("images/bullet_blaster_big_single.png");
         teleporterImage = loadImage("images/teleportBullet.png");
         explosionImage = loadImage("images/VRwF.gif");
+        teleportExplosionImage = loadImage("images/teleportExplosion.gif");
         techsImage = loadImage("images/Branson.png");
+        explosionSound = loadSound("Sounds/explosionSound.wav");
+        bulletShootingSound = loadSound("Sounds/bulletFireSound.wav");
+        teleporterShotSound = loadSound("Sounds/teleporterShotSound.mp3");
+        muskAliensSound = loadSound("Sounds/MuskAliens.wav");
     }
 
     play() {
@@ -64,6 +69,7 @@ class Game {
                 playerVerticalDirection + 10,
                 bulletImage
             );
+            bulletShootingSound.play();
             bulletsArray.push(bullet);
         }
         if (bulletsRegulator != 0) {
@@ -78,6 +84,7 @@ class Game {
                 playerVerticalDirection + 10,
                 teleporterImage
             );
+            teleporterShotSound.play();
             teleporterArray.push(teleporter);
         }
         if (teleporterRegulator != 0) {
@@ -105,7 +112,7 @@ class Game {
         }
     }
 
-    //Collision Detection: Player hitting obstacle
+    //Collision Detection: Player hitting asteroid
     playerObstacleCollision() {
         for (let i = 0; i < this.obstacles.length; i++) {
             if (isCollidingWithEnemy(this.player, this.obstacles[i])) {
@@ -114,7 +121,16 @@ class Game {
         }
     }
 
-    //Collision Detection: Bullet hitting obstacle
+    //Collision Detection: Player hitting techguy
+    playerTechGuyCollision() {
+        for (let i = 0; i < this.techs.length; i++) {
+            if (isCollidingWithEnemy(this.player, this.techs[i])) {
+                gameOver();
+            }
+        }
+    }
+
+    //Collision Detection: Bullet hitting asteroid
     bulletObstacleCollision() {
         for (let i = 0; i < bulletsArray.length; i++)
             for (let y = 0; y < this.obstacles.length; y++) {
@@ -125,12 +141,31 @@ class Game {
                         explosionImage
                     );
                     this.explosions.push(explosion);
-
+                    explosionSound.play();
                     score++;
                     anzeigeSPAN.innerHTML = score;
                     this.obstacles.splice(y, 1);
                     bulletsArray.splice(i, 1);
                     break;
+                }
+            }
+    }
+
+    //Collision Detection: Bullet hitting techguy
+    bulletTechGuyCollision() {
+        for (let i = 0; i < bulletsArray.length; i++)
+            for (let y = 0; y < this.techs.length; y++) {
+                if (isCollidingWithEnemy(bulletsArray[i], this.techs[y])) {
+                    let explosion = new Explosions(
+                        bulletsArray[i].x,
+                        bulletsArray[i].y - 100,
+                        explosionImage
+                    );
+                    this.explosions.push(explosion);
+                    explosionSound.play();
+                    this.obstacles.splice(y, 1);
+                    bulletsArray.splice(i, 1);
+                    gameOver();
                 }
             }
     }
@@ -143,8 +178,9 @@ class Game {
                     let explosion = new Explosions(
                         teleporterArray[i].x,
                         teleporterArray[i].y - 100,
-                        explosionImage
+                        teleportExplosionImage
                     );
+                    muskAliensSound.play();
                     this.explosions.push(explosion);
 
                     score++;
