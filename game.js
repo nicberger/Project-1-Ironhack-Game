@@ -10,12 +10,14 @@ class Game {
     preload() {
         this.player.preload();
         this.background.preload();
+        //Images
         obstaclesimage = loadImage("images/asteroid_02.png");
         bulletImage = loadImage("images/bullet_blaster_big_single.png");
         teleporterImage = loadImage("images/teleportBullet.png");
         explosionImage = loadImage("images/VRwF.gif");
         teleportExplosionImage = loadImage("images/teleportExplosion.gif");
         techsImage = loadImage("images/Branson.png");
+        //Sounds
         explosionSound = loadSound("Sounds/explosionSound.wav");
         bulletShootingSound = loadSound("Sounds/bulletFireSound.wav");
         teleporterShotSound = loadSound("Sounds/teleporterShotSound.mp3");
