@@ -7,10 +7,6 @@ class Bullets {
         this.img = img;
     }
 
-    // preload() {
-    //     this.imgBlaster = loadImage("images/bullet_blaster_big_single.png");
-    // }
-
     draw() {
         image(this.img, this.x, this.y, this.width, this.height);
     }
