@@ -28,9 +28,7 @@ let bulletsRegulator = 0;
 let teleporterRegulator = 0;
 
 //Score
-let anzeigeSPAN = document.getElementById("score");
 let score = 0;
-anzeigeSPAN.innerHTML = score;
 
 //Images classes
 let obstaclesimage;

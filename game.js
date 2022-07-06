@@ -145,7 +145,6 @@ class Game {
                     this.explosions.push(explosion);
                     explosionSound.play();
                     score++;
-                    anzeigeSPAN.innerHTML = score;
                     this.obstacles.splice(y, 1);
                     bulletsArray.splice(i, 1);
                     break;
@@ -186,7 +185,6 @@ class Game {
                     this.explosions.push(explosion);
 
                     score++;
-                    anzeigeSPAN.innerHTML = score;
                     this.techs.splice(y, 1);
                     teleporterArray.splice(i, 1);
                     break;

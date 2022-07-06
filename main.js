@@ -3,7 +3,7 @@ let game = new Game();
 function setup() {
     createCanvas(1000, 600);
     button = createButton("Play");
-    button.position(500, 400);
+    button.position(canvasWidth / 2, 340);
     button.mousePressed(startGame);
     slider = createSlider(0, 1, 0.5, 0.01);
 }
@@ -44,14 +44,40 @@ function draw() {
         game.bulletsShooting();
         game.teleporterShooting();
         game.keyPressed();
+        textSize(20);
+        fill(227, 101, 91);
+        text("Score: " + score, 50, 30);
     }
 
     //Game Over Screen
     if (gameMode == 2) {
         image(bgGameover, -60, 0, 1064, 841);
         textSize(72);
-        textAlign(CENTER);
-        text("GAME OVER", width / 2, height / 2);
+        fill(227, 101, 91);
+        text("GAME OVER", width / 2, 200);
+        textSize(40);
+        fill(229, 101, 91);
+        text("Score: " + score, canvasWidth / 2, 280);
+
+        //Display of score ratings (Game Over Screen)
+        if (score < 10) {
+            textSize(20);
+            fill(237, 101, 91);
+            text("Seriously, you can do better!", canvasWidth / 2, 340);
+        } else if (score < 20) {
+            textSize(20);
+            fill(237, 101, 91);
+            text("Elon needs you, try again!", canvasWidth / 2, 340);
+        } else if (score < 50) {
+            textSize(20);
+
+            fill(237, 101, 91);
+            text("Great job, you're getting better!", canvasWidth / 2, 340);
+        } else if (score < 1000) {
+            textSize(20);
+            fill(237, 101, 91);
+            text("Wow, Elon's gonna hire you!", canvasWidth / 2, 340);
+        }
     }
 }
 
@@ -73,4 +99,5 @@ function startGame() {
 function reStartGame() {
     gameMode = 1;
     button2.hide();
+    score = 0;
 }
