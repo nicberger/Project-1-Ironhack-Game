@@ -11,7 +11,21 @@ class Game {
         this.player.preload();
         this.background.preload();
         //Images
-        obstaclesimage = loadImage("images/asteroid_02.png");
+        asteroidsImageArray = [
+            loadImage("images/asteroid_01.png"),
+            loadImage("images/asteroid_02.png"),
+            loadImage("images/asteroid_03.png"),
+            loadImage("images/asteroid_04.png"),
+            loadImage("images/asteroid_05.png"),
+            loadImage("images/asteroid_06.png"),
+            loadImage("images/asteroid_07.png"),
+            loadImage("images/asteroid_08.png"),
+            loadImage("images/asteroid_09.png"),
+            loadImage("images/asteroid_10.png"),
+            loadImage("images/asteroid_11.png"),
+            loadImage("images/asteroid_12.png"),
+            loadImage("images/asteroid_13.png"),
+        ];
         bulletImage = loadImage("images/bullet_blaster_big_single.png");
         teleporterImage = loadImage("images/teleportBullet.png");
         explosionImage = loadImage("images/VRwF.gif");
@@ -35,7 +49,9 @@ class Game {
 
         if (frameCount % 75 === 0) {
             // if (frameCount % 180 === 0) {
-            this.obstacles.push(new Obstacle(obstaclesimage));
+            this.obstacles.push(
+                new Obstacle(asteroidsImageArray[getRandomNumber(0, 13)])
+            );
         }
         if (frameCount % (360 * getRandomNumber(1, 2)) === 0) {
             // if (frameCount % 180 === 0) {

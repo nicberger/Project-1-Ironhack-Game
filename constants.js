@@ -31,7 +31,7 @@ let teleporterRegulator = 0;
 let score = 0;
 
 //Images classes
-let obstaclesimage;
+let asteroidsImageArray = [];
 let bulletImage;
 let teleporterImage;
 let explosionImage;
