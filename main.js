@@ -57,11 +57,11 @@ function draw() {
 
 function preload() {
     font1 = loadFont("fonts/ARCADE_N.TTF");
+    introSong = loadSound("sounds/gameIntroSong.mp3");
     //Images
     bg = loadImage("images/background_01_static.png");
     muskStartScreenImage = loadImage("images/ElonMuskStarterScreen.png");
     bgGameover = loadImage("images/background_01_parallax_01.png");
-    introSong = loadSound("sounds/gameIntroSong.mp3");
     game.preload();
 }
 
