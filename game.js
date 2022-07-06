@@ -16,7 +16,11 @@ class Game {
         teleporterImage = loadImage("images/teleportBullet.png");
         explosionImage = loadImage("images/VRwF.gif");
         teleportExplosionImage = loadImage("images/teleportExplosion.gif");
-        techsImage = loadImage("images/Branson.png");
+        techsImageArray = [
+            loadImage("images/Musk.png"),
+            loadImage("images/Branson.png"),
+            loadImage("images/Bezos.png"),
+        ];
         //Sounds
         explosionSound = loadSound("sounds/explosionSound.wav");
         bulletShootingSound = loadSound("sounds/bulletFireSound.wav");
@@ -33,9 +37,9 @@ class Game {
             // if (frameCount % 180 === 0) {
             this.obstacles.push(new Obstacle(obstaclesimage));
         }
-        if (frameCount % 360 === 0) {
+        if (frameCount % (360 * getRandomNumber(1, 2)) === 0) {
             // if (frameCount % 180 === 0) {
-            this.techs.push(new Techs(techsImage));
+            this.techs.push(new Techs(techsImageArray[getRandomNumber(0, 3)]));
         }
 
         this.explosions = this.explosions.filter((explosion) => {

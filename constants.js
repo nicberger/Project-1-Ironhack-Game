@@ -36,12 +36,10 @@ let bulletImage;
 let teleporterImage;
 let explosionImage;
 let teleportExplosionImage;
-let techsImage;
-let techsImage2;
 let techsImageArray = [];
 
 // functions and formulas
-function getRndInteger(min, max) {
+function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
