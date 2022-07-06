@@ -5,6 +5,7 @@ function setup() {
     button = createButton("Play");
     button.position(500, 400);
     button.mousePressed(startGame);
+    slider = createSlider(0, 1, 0.5, 0.01);
 }
 
 function draw() {
@@ -18,6 +19,10 @@ function draw() {
         text("Destroy the Asteroids", 500, 120);
         textSize(25);
         textAlign(CENTER);
+        if (!introSong.isPlaying()) {
+            introSong.play();
+        }
+        introSong.setVolume(slider.value());
         text("...and safe some tech billionaires!", 500, 160);
         textSize(12);
         textAlign(CENTER);
@@ -25,6 +30,8 @@ function draw() {
     }
     //Gameplay Mode
     if (gameMode == 1) {
+        slider.hide();
+        introSong.stop();
         background(200);
         game.play();
         //Collision Scenarios
@@ -53,6 +60,7 @@ function preload() {
     bg = loadImage("images/background_01_static.png");
     muskStartScreenImage = loadImage("images/ElonMuskStarterScreen.png");
     bgGameover = loadImage("images/background_01_parallax_01.png");
+    introSong = loadSound("sounds/gameIntroSong.mp3");
     game.preload();
 }
 
