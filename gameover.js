@@ -10,7 +10,7 @@ function gameOver() {
     button2.style("background-color", "Transparent");
     button2.style("font-size", "17px");
     button2.style("border", "Transparent");
-    button2.position(380, 380);
+    button2.position(370, 380);
     button2.mousePressed(reStartGame);
     game = new Game();
     playerVerticalDirection = canvasHeight / 2;

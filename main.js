@@ -1,17 +1,16 @@
 let game = new Game();
 
-let font1;
+let canvas;
 
 function setup() {
-    createCanvas(1000, 600);
-    textFont(font1);
+    canvas = createCanvas(1000, 600);
     //Play Button Styling
     button = createButton("Press here to 'START GAME'!");
     button.style("font-size", "17px");
     button.style("color", "rgb(227, 101, 91)");
     button.style("background-color", "Transparent");
     button.style("border", "Transparent");
-    button.position(380, 300);
+    button.position(380, 280);
     button.mousePressed(startGame);
 
     //Background Music Button Styling
@@ -104,9 +103,9 @@ function draw() {
 }
 
 function preload() {
-    font1 = loadFont("fonts/ARCADE_N.TTF");
+    //Game Theme by me inspired by Bowies "Space Oddity"
     introSong = loadSound("sounds/gameIntroSong.mp3");
-    //Image
+    //Images
     bg = loadImage("images/background_01_static.png");
     muskStartScreenImage = loadImage("images/ElonMuskStarterScreen.png");
     bgGameover = loadImage("images/background_01_parallax_01.png");

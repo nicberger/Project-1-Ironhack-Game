@@ -50,13 +50,11 @@ class Game {
         this.player.move();
 
         if (frameCount % 75 === 0) {
-            // if (frameCount % 180 === 0) {
             this.obstacles.push(
                 new Obstacle(asteroidsImageArray[getRandomNumber(0, 13)])
             );
         }
         if (frameCount % (360 * getRandomNumber(1, 2)) === 0) {
-            // if (frameCount % 180 === 0) {
             this.techs.push(new Techs(techsImageArray[getRandomNumber(0, 3)]));
         }
 
@@ -64,10 +62,10 @@ class Game {
             return explosion.draw();
         });
 
-        // in here we clear every obstacle that is no longer visible.
+        // In here we clear every asteroid and tech that is no longer visible in the canvas
         this.obstacles = this.obstacles.filter((obstacle) => {
             // because we are calling the methods, things still happen (like drawing the obstacle).
-            // even if this is not directly the responsability of the current filter method, we can still, effectively, draw the obstacles
+            // even if this is not directly the responsability of the current filter method, we can still, effectively, draw the o
             obstacle.drawObstacle();
 
             return obstacle.x >= -obstacle.width;
@@ -84,7 +82,7 @@ class Game {
 
     keyPressed() {
         this.player.keyPressed();
-        //shooting bullets with SPACEBAR
+        //Shooting bullets with SPACEBAR
         if (keyIsDown(SPACEBAR) && bulletsRegulator == 0) {
             bulletsRegulator = 40;
 
