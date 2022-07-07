@@ -39,6 +39,7 @@ class Game {
         explosionSound = loadSound("sounds/explosionSound.wav");
         bulletShootingSound = loadSound("sounds/bulletFireSound.wav");
         teleporterShotSound = loadSound("sounds/teleporterShotSound.mp3");
+        telporterImpactSound = loadSound("sounds/teleporterImpact.wav");
         muskAliensSound = loadSound("sounds/MuskAliens.wav");
     }
 
@@ -201,7 +202,7 @@ class Game {
                         teleporterArray[i].y - 100,
                         teleportExplosionImage
                     );
-                    muskAliensSound.play();
+                    telporterImpactSound.play();
                     this.explosions.push(explosion);
 
                     score++;

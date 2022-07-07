@@ -54,8 +54,9 @@ let bg;
 let bgGameover;
 let muskStartScreenImage;
 
-//Audio
+//Audio Sounds
 let explosionSound;
+let telporterImpactSound;
 let bulletShootingSound;
 let teleporterShotSound;
 let muskAliensSound;
