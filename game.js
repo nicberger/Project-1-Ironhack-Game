@@ -146,7 +146,7 @@ class Game {
                 this.explosions.push(explosion);
                 if (!explosionGameOverSound.isPlaying()) {
                     explosionGameOverSound.play();
-                    explosionGameOverSound.setVolume(0.5);
+                    explosionGameOverSound.setVolume(0.3);
                 }
                 gameOver();
             }
@@ -165,7 +165,7 @@ class Game {
                 this.explosions.push(explosion);
                 if (!explosionGameOverSound.isPlaying()) {
                     explosionGameOverSound.play();
-                    explosionGameOverSound.setVolume(0.5);
+                    explosionGameOverSound.setVolume(0.3);
                 }
                 gameOver();
             }
@@ -205,7 +205,7 @@ class Game {
                     this.explosions.push(explosion);
                     if (!explosionGameOverSound.isPlaying()) {
                         explosionGameOverSound.play();
-                        explosionGameOverSound.setVolume(0.5);
+                        explosionGameOverSound.setVolume(0.3);
                     }
                     this.obstacles.splice(y, 1);
                     bulletsArray.splice(i, 1);

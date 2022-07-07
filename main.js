@@ -3,14 +3,14 @@ let game = new Game();
 let canvas;
 
 function setup() {
-    canvas = createCanvas(1000, 600);
+    createCanvas(1000, 600);
     //Play Button Styling
-    button = createButton("Press here to 'START GAME'!");
+    button = createButton("Press 'START GAME'!");
     button.style("font-size", "17px");
     button.style("color", "rgb(227, 101, 91)");
     button.style("background-color", "Transparent");
     button.style("border", "Transparent");
-    button.position(380, 280);
+    button.position(canvas, 280);
     button.mousePressed(startGame);
 
     //Background Music Button Styling
@@ -19,11 +19,12 @@ function setup() {
     backgroundmusicPlayButton.style("color", "rgb(227, 101, 91)");
     backgroundmusicPlayButton.style("background-color", "Transparent");
     backgroundmusicPlayButton.style("border", "Transparent");
-    backgroundmusicPlayButton.position(733, 12);
+    backgroundmusicPlayButton.position(canvas, 26);
 
     //Volume Slider Styling
     slider = createSlider(0, 1, 0.3, 0.01);
-    slider.position(825, 10);
+    slider.position(canvas);
+    slider.class("slider01");
 }
 
 function togglePlaying() {
@@ -49,7 +50,7 @@ function draw() {
         text("Destroy the Asteroids", 500, 120);
         textSize(25);
         textAlign(CENTER);
-        text("...and save some tech billionaires!", 500, 160);
+        text("...and save some tech billionaires from space!", 500, 160);
     }
     //Gameplay Mode
     if (gameMode == 1) {

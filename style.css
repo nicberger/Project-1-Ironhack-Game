@@ -11,8 +11,17 @@ body {
         rgba(0, 0, 0, 0.80015756302521) 47%,
         rgba(0, 0, 0, 0.7777485994397759) 100%
     );
+    display: flex;
+    justify-content: center;
+}
+
+canvas {
+    width: 50px;
+    height: 50px;
     position: relative;
-    margin-top: 5%;
-    margin-left: 25%;
-    margin-right: 25%;
+}
+
+.slider {
+    position: relative;
+    width: 400px;
 }
