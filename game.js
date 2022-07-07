@@ -159,8 +159,8 @@ class Game {
             for (let y = 0; y < this.obstacles.length; y++) {
                 if (isCollidingWithEnemy(bulletsArray[i], this.obstacles[y])) {
                     let explosion = new Explosions(
-                        bulletsArray[i].x,
-                        bulletsArray[i].y - 100,
+                        bulletsArray[i].x + 20,
+                        bulletsArray[i].y - 40,
                         explosionImage
                     );
                     this.explosions.push(explosion);
@@ -198,8 +198,8 @@ class Game {
             for (let y = 0; y < this.techs.length; y++) {
                 if (isCollidingWithEnemy(teleporterArray[i], this.techs[y])) {
                     let explosion = new Explosions(
-                        teleporterArray[i].x,
-                        teleporterArray[i].y - 100,
+                        teleporterArray[i].x + 20,
+                        teleporterArray[i].y - 40,
                         teleportExplosionImage
                     );
                     telporterImpactSound.play();
