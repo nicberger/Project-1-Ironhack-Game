@@ -2,13 +2,42 @@ let game = new Game();
 
 function setup() {
     createCanvas(1000, 600);
-    button = createButton("Play");
-    button.position(canvasWidth / 2, 340);
+
+    //Play Button Styling
+    button = createButton("Press here to 'START GAME'!");
+    button.style("font-size", "17px");
+    button.style("color", "rgb(227, 101, 91)");
+    button.style("background-color", "Transparent");
+    button.style("border", "Transparent");
+    button.position(380, 300);
     button.mousePressed(startGame);
-    slider = createSlider(0, 1, 0.5, 0.01);
+
+    //Background Music Button Styling
+    backgroundmusicPlayButton = createButton("MUSIC ON");
+    backgroundmusicPlayButton.mousePressed(togglePlaying);
+    backgroundmusicPlayButton.style("color", "rgb(227, 101, 91)");
+    backgroundmusicPlayButton.style("background-color", "Transparent");
+    backgroundmusicPlayButton.style("border", "Transparent");
+    backgroundmusicPlayButton.position(733, 12);
+
+    //Volume Slider Styling
+    slider = createSlider(0, 1, 0.3, 0.01);
+    slider.position(825, 10);
+}
+
+function togglePlaying() {
+    if (!introSong.isPlaying()) {
+        introSong.play();
+        backgroundmusicPlayButton.html("MUSIC OFF");
+    } else {
+        introSong.stop();
+        backgroundmusicPlayButton.html("MUSIC ON");
+    }
 }
 
 function draw() {
+    //Slider globally shown in all game modes
+    introSong.setVolume(slider.value());
     //Start screen
     if (gameMode == 0) {
         image(bg, -60, 0, 1024, 768);
@@ -19,19 +48,10 @@ function draw() {
         text("Destroy the Asteroids", 500, 120);
         textSize(25);
         textAlign(CENTER);
-        if (!introSong.isPlaying()) {
-            introSong.play();
-        }
-        introSong.setVolume(slider.value());
-        text("...and safe some tech billionaires!", 500, 160);
-        textSize(12);
-        textAlign(CENTER);
-        text("Press 'BUTTON' to play.", 500, 320);
+        text("...and save some tech billionaires!", 500, 160);
     }
     //Gameplay Mode
     if (gameMode == 1) {
-        slider.hide();
-        introSong.stop();
         background(200);
         game.play();
         //Collision Scenarios
@@ -57,26 +77,26 @@ function draw() {
         text("GAME OVER", width / 2, 200);
         textSize(40);
         fill(229, 101, 91);
-        text("Score: " + score, canvasWidth / 2, 280);
+        text("Score: " + score, canvasWidth / 2, 255);
 
         //Display of score ratings (Game Over Screen)
         if (score < 10) {
             textSize(20);
             fill(237, 101, 91);
-            text("Seriously, you can do better!", canvasWidth / 2, 340);
+            text("Seriously? You can do better!", canvasWidth / 2, 300);
         } else if (score < 20) {
             textSize(20);
             fill(237, 101, 91);
-            text("Elon needs you, try again!", canvasWidth / 2, 340);
+            text("Elon needs you, try again!", canvasWidth / 2, 300);
         } else if (score < 50) {
             textSize(20);
 
             fill(237, 101, 91);
-            text("Great job, you're getting better!", canvasWidth / 2, 340);
+            text("Great job, you're getting better!", canvasWidth / 2, 300);
         } else if (score < 1000) {
             textSize(20);
             fill(237, 101, 91);
-            text("Wow, Elon's gonna hire you!", canvasWidth / 2, 340);
+            text("Wow, Elon's gonna hire you!", canvasWidth / 2, 300);
         }
     }
 }
@@ -84,7 +104,7 @@ function draw() {
 function preload() {
     font1 = loadFont("fonts/ARCADE_N.TTF");
     introSong = loadSound("sounds/gameIntroSong.mp3");
-    //Images
+    //Image
     bg = loadImage("images/background_01_static.png");
     muskStartScreenImage = loadImage("images/ElonMuskStarterScreen.png");
     bgGameover = loadImage("images/background_01_parallax_01.png");

@@ -43,10 +43,11 @@ function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-//variables main.js
+//Mode and button variables in main.js and gameover.js
 let gameMode = 0;
 let button;
 let button2;
+let backgroundmusicPlayButton;
 
 //Background images
 let bg;
