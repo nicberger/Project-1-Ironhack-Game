@@ -13,10 +13,8 @@ body {
     );
     display: flex;
     justify-content: center;
-    font-family: "ArcadeClassic";
 }
 
 canvas {
-    font-family: "ArcadeClassic", sans-serif;
     position: relative;
 }

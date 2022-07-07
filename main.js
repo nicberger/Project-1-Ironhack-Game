@@ -1,7 +1,7 @@
 let game = new Game();
 
 function setup() {
-    createCanvas(canvasWidth, canvasHeight);
+    createCanvas(1000, 600);
     //Play Button Styling
     button = createButton("Press 'START GAME'!");
     button.style("font-size", "17px");
@@ -36,8 +36,6 @@ function togglePlaying() {
 }
 
 function draw() {
-    //The font has a weird letter spacing, which needs to be readjusted
-    select("canvas").elt.style.letterSpacing = "9px";
     //Slider globally shown in all game modes
     introSong.setVolume(slider.value());
     //Start screen
@@ -47,11 +45,10 @@ function draw() {
         fill(227, 101, 91);
         textSize(50);
         textAlign(CENTER);
-        text("Destroy  the  Asteroids", 500, 120);
-        textFont("ArcadeClassic");
-        textSize(23);
+        text("Destroy the Asteroids", 500, 120);
+        textSize(25);
         textAlign(CENTER);
-        text("...and  save  some  tech  billionaires  from  space!", 500, 160);
+        text("...and save some tech billionaires from space!", 500, 160);
     }
     //Gameplay Mode
     if (gameMode == 1) {
@@ -69,7 +66,7 @@ function draw() {
         game.keyPressed();
         textSize(20);
         fill(227, 101, 91);
-        text("Score: " + score, 75, 30);
+        text("Score: " + score, 50, 30);
     }
 
     //Game Over Screen
@@ -86,20 +83,20 @@ function draw() {
         if (score < 10) {
             textSize(20);
             fill(237, 101, 91);
-            text("Seriously? You  can  do  better!", canvasWidth / 2, 300);
+            text("Seriously? You can do better!", canvasWidth / 2, 300);
         } else if (score < 20) {
             textSize(20);
             fill(237, 101, 91);
-            text("Elon  needs  you,  try  again!", canvasWidth / 2, 300);
+            text("Elon needs you, try again!", canvasWidth / 2, 300);
         } else if (score < 50) {
             textSize(20);
 
             fill(237, 101, 91);
-            text("Great  job,  you're  getting  better!", canvasWidth / 2, 300);
+            text("Great job, you're getting better!", canvasWidth / 2, 300);
         } else if (score < 1000) {
             textSize(20);
             fill(237, 101, 91);
-            text("Wow, Elon's  gonna  hire  you!", canvasWidth / 2, 300);
+            text("Wow, Elon's gonna hire you!", canvasWidth / 2, 300);
         }
     }
 }
