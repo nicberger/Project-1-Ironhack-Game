@@ -2,11 +2,14 @@ class Player {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.width = 80;
-        this.height = 50;
+        // this.width = 80;
+        // this.height = 50;
+
+        this.width = 155;
+        this.height = 66;
     }
     preload() {
-        this.imgSpaceship = loadImage("images/Spaceship1.png");
+        this.imgSpaceship = loadImage("images/Spaceship.png");
     }
 
     keyPressed() {

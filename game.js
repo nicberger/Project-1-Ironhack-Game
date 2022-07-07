@@ -88,8 +88,8 @@ class Game {
             bulletsRegulator = 40;
 
             let bullet = new Bullets(
-                playerHorizontalDirection,
-                playerVerticalDirection + 10,
+                playerHorizontalDirection + 80,
+                playerVerticalDirection + 30,
                 bulletImage
             );
             bulletShootingSound.play();
@@ -103,8 +103,8 @@ class Game {
             teleporterRegulator = 40;
 
             let teleporter = new Teleporter(
-                playerHorizontalDirection,
-                playerVerticalDirection + 10,
+                playerHorizontalDirection + 80,
+                playerVerticalDirection + 20,
                 teleporterImage
             );
             teleporterShotSound.play();
