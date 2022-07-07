@@ -41,6 +41,7 @@ class Game {
         teleporterShotSound = loadSound("sounds/teleporterShotSound.mp3");
         telporterImpactSound = loadSound("sounds/teleporterImpact.wav");
         muskAliensSound = loadSound("sounds/MuskAliens.wav");
+        explosionGameOverSound = loadSound("sounds/explosionGameOver.mp3");
     }
 
     play() {
@@ -139,6 +140,16 @@ class Game {
     playerObstacleCollision() {
         for (let i = 0; i < this.obstacles.length; i++) {
             if (isCollidingWithEnemy(this.player, this.obstacles[i])) {
+                let explosion = new Explosions(
+                    this.player.x,
+                    this.player.y,
+                    explosionImage
+                );
+                this.explosions.push(explosion);
+                if (!explosionGameOverSound.isPlaying()) {
+                    explosionGameOverSound.play();
+                    explosionGameOverSound.setVolume(0.5);
+                }
                 gameOver();
             }
         }
@@ -148,6 +159,16 @@ class Game {
     playerTechGuyCollision() {
         for (let i = 0; i < this.techs.length; i++) {
             if (isCollidingWithEnemy(this.player, this.techs[i])) {
+                let explosion = new Explosions(
+                    this.player.x,
+                    this.player.y,
+                    explosionImage
+                );
+                this.explosions.push(explosion);
+                if (!explosionGameOverSound.isPlaying()) {
+                    explosionGameOverSound.play();
+                    explosionGameOverSound.setVolume(0.5);
+                }
                 gameOver();
             }
         }
@@ -184,7 +205,10 @@ class Game {
                         explosionImage
                     );
                     this.explosions.push(explosion);
-                    explosionSound.play();
+                    if (!explosionGameOverSound.isPlaying()) {
+                        explosionGameOverSound.play();
+                        explosionGameOverSound.setVolume(0.5);
+                    }
                     this.obstacles.splice(y, 1);
                     bulletsArray.splice(i, 1);
                     gameOver();

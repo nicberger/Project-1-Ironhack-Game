@@ -61,6 +61,7 @@ let bulletShootingSound;
 let teleporterShotSound;
 let muskAliensSound;
 let introSong;
+let explosionGameOverSound;
 
 //Audio Features
 let slider;
