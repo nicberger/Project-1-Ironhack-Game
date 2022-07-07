@@ -104,7 +104,7 @@ function draw() {
 }
 
 function preload() {
-    //Game Theme by me inspired by Bowies "Space Oddity"
+    //Game Theme by me inspired by David Bowies "Space Oddity"
     introSong = loadSound("sounds/gameIntroSong.mp3");
     //Images
     bg = loadImage("images/background_01_static.png");
