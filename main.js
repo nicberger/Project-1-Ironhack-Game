@@ -1,8 +1,10 @@
 let game = new Game();
 
+let font1;
+
 function setup() {
     createCanvas(1000, 600);
-
+    textFont(font1);
     //Play Button Styling
     button = createButton("Press here to 'START GAME'!");
     button.style("font-size", "17px");
